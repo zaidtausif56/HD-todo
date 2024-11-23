@@ -2,8 +2,11 @@ import { Request, Response } from "express";
 import supabase from "../supabaseClient";
 import { generateOTP } from "../services/otpService";
 import { sendOTPEmail } from "../services/emailService";
+import { generateOtpToken } from '../utils/jet';
 
+const otpStore = new Map<string, { otp: string; expiresAt: number }>();
 export const sendOTP = async (req: Request, res: Response) => {
+  console.log("Auth :", req.body);
   const { email, page } = req.body;
   console.log(page);
   const userid = await supabase
@@ -14,8 +17,11 @@ export const sendOTP = async (req: Request, res: Response) => {
   console.log(userid);
   if (page == "login") {
     if (userid.data !== null) {
+      console.log("Login otp being sent.");
       const otp = generateOTP();
-      req.session.otp = otp;
+      const expiresAt = Date.now() + 5 * 60 * 1000;
+      otpStore.set(email, { otp, expiresAt });
+      // req.session.otp = otp;
       // Send OTP to email
       await sendOTPEmail(email, otp);
       res.status(200).send({ message: "OTP sent to email" });
@@ -26,8 +32,11 @@ export const sendOTP = async (req: Request, res: Response) => {
   }
   else if (page == "signup") {
     if (userid.data == null) {
+      console.log("Signup otp being sent.");
       const otp = generateOTP();
-      req.session.otp = otp;
+      const expiresAt = Date.now() + 5 * 60 * 1000;
+      otpStore.set(email, { otp, expiresAt });
+      // req.session.otp = otp;
       // Send OTP to email
       await sendOTPEmail(email, otp);
       res.status(200).send({ message: "OTP sent to email" });
@@ -46,9 +55,12 @@ export const sendOTP = async (req: Request, res: Response) => {
 
 export const signup = async (req: Request, res: Response) => {
   const { name, dob, email, otp } = req.body;
+  console.log("Signnnn: ", req.body)
 
   // Check if OTP matches
-  if (otp !== req.session.otp) {
+  const otpData = otpStore.get(email);
+  if (!otpData || otpData.otp !== otp || Date.now() > otpData.expiresAt) {
+    console.log(req.session.otp);
     return res.status(400).send({ message: "Invalid OTP" });
   }
 
@@ -66,7 +78,8 @@ export const signup = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
   const { email, otp } = req.body;
-  if (otp !== req.session.otp) {
+  const otpData = otpStore.get(email);
+  if (!otpData || otpData.otp !== otp || Date.now() > otpData.expiresAt) {
     return res.status(400).send({ message: "Invalid OTP" });
   }
   else {
@@ -76,6 +89,6 @@ export const login = async (req: Request, res: Response) => {
       .eq("email", email)
       .single();
     if (error) return res.status(400).send({ message: "Error in getting user data" });
-    res.status(200).send({ message: "OTP sent to email for login", data });
+    res.status(200).send({ message: "User Logged in successfully", data });
   }
 };
