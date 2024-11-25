@@ -20,9 +20,7 @@ export const sendOTPEmail = async (to: string, otp: string) => {
       subject: 'Your OTP from HD Notes',
       text: `Hello,
        
-${otp} is your one-time passcode (OTP) for signup/login to HD Notes.
-      
-The OTP will be valid for 5 minutes.`,
+${otp} is your one-time passcode (OTP) for signup/login to HD Notes.`,
     });
   } catch (error) {
     console.error('Error sending OTP email:', error);

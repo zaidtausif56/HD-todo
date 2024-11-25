@@ -109,9 +109,6 @@ const Dashboard: React.FC = () => {
         </div>
 
         <div className="dashcontent">
-          {/* <div className="text">
-            <h1>Dashboard</h1>
-          </div> */}
 
           <div className="dashwelcome-card">
             <h2>Welcome, {userData?.name || "User"}!</h2>

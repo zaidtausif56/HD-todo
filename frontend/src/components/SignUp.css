@@ -219,8 +219,13 @@
 }
 
 @media (max-width: 480px) {
-  .dashboard-container {
+  .signup-container {
     width: 97vw;
+  }
+  .form {
+    width: 90%;
+    max-width: 90%;
+    margin-bottom: 24px;
   }
   .left-column {
     padding: 16px;
@@ -228,6 +233,15 @@
 
   .content {
     padding: 0 8px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .input-group input {
+    padding: 16px;
+    font-size: 14px;
   }
 
   .top {
@@ -242,31 +256,10 @@
     font-size: 14px;
   }
 
-  .input-group input {
-    padding: 12px;
-    font-size: 14px;
-  }
-
   .primary-button {
-    padding: 12px;
+    padding: 14px;
     font-size: 14px;
-  }
-
-  /* Prevent form from going off screen */
-  .form {
-    width: 97%;
-    max-width: 97%;
-    margin-bottom: 24px;
-  }
-
-  /* Adjust input padding for better touch targets */
-  .input-group input {
-    padding: 14px 12px;
-    height: 48px;
-  }
-
-  /* Improve button touch target */
-  .primary-button {
+    width: 98%;
     height: 48px;
     margin-top: 8px;
   }

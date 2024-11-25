@@ -32,9 +32,7 @@ const sendOTPEmail = (to, otp) => __awaiter(void 0, void 0, void 0, function* ()
             subject: 'Your OTP from HD Notes',
             text: `Hello,
        
-${otp} is your one-time passcode (OTP) for signup/login to HD Notes.
-      
-The OTP will be valid for 5 minutes.`,
+${otp} is your one-time passcode (OTP) for signup/login to HD Notes.`,
         });
     }
     catch (error) {

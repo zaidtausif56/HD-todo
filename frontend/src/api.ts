@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://hd-todo.onrender.com';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 
 export const sendOtp = async (email: string, page: 'signup' | 'login') => {
@@ -15,14 +15,10 @@ export const signup = async (name: string, dob: string, email: string, otp: stri
 
 export const login = async (email: string, otp: string, otpToken: string) => {
     const response = await axios.post(`${API_BASE_URL}/auth/login`, { email, otp, otpToken });
-    // if (response.data.authToken) {
-    //     localStorage.setItem('authToken', response.data.authToken);
-    // }
     return response.data;
 };
 
 export const createNote = async (accessToken: string | null, noteData: string, completed: boolean) => {
-    console.log(accessToken);
     const response = await axios.post(`${API_BASE_URL}/notes/create`, { notedata: noteData, completed }, {
         headers: {
             ContentType: 'application/json',
@@ -42,7 +38,6 @@ export const deleteNote = async (accessToken: string | null, noteId: string) => 
 };
 
 export const viewNotes = async (accessToken: string | null) => {
-    console.log(accessToken);
     const response = await axios.post(`${API_BASE_URL}/notes/view`, {}, {
         headers: {
             Authorization: `Bearer ${accessToken}`,

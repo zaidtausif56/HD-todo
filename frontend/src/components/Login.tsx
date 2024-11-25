@@ -47,11 +47,9 @@ const Login: React.FC = () => {
   const handleLogin = async () => {
     try {
       const response = await login(email, otp, otpToken);
-      console.log(response);
       const { authToken, userData } = response;
-
       if (!authToken) {
-        setResponse("Invalid login response");
+        setResponse(response.message);
         return;
       }
 

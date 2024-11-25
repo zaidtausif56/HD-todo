@@ -17,22 +17,18 @@ const supabaseClient_1 = __importDefault(require("../supabaseClient"));
 const otpService_1 = require("../services/otpService");
 const emailService_1 = require("../services/emailService");
 const jwt_1 = require("../utils/jwt");
-// const otpStore = new Map<string, { otp: string; expiresAt: number }>();
 const sendOTP = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("Auth :", req.body);
     const { email, page } = req.body;
-    console.log(page);
     const userid = yield supabaseClient_1.default
         .from("hdusers")
         .select("id")
         .eq("email", email)
         .single();
-    console.log(userid);
     if ((page === "login" && userid.data !== null) || (page === "signup" && userid.data == null)) {
         const otp = (0, otpService_1.generateOTP)();
         const otpToken = (0, jwt_1.generateOtpToken)(email, otp);
-        console.log("Gen token:", otpToken);
         yield (0, emailService_1.sendOTPEmail)(email, otp);
+        console.log("OTP Sent");
         res.status(200).send({ message: "OTP sent to email", otpToken });
     }
     else {
@@ -42,10 +38,8 @@ const sendOTP = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.sendOTP = sendOTP;
 const signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, dob, email, otp, otpToken } = req.body;
-    console.log("Signnnn: ", req.body);
     try {
         const decoded = (0, jwt_1.verifyToken)(otpToken);
-        console.log(decoded);
         if (decoded.email !== email || decoded.otp !== otp) {
             return res.status(400).send({ message: "Invalid OTP" });
         }
@@ -56,6 +50,7 @@ const signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (error) {
             return res.status(500).send({ message: "Error creating user", error });
         }
+        console.log("Signup Successful.");
         res.status(201).send({ message: "User created successfully", data });
     }
     catch (error) {
@@ -68,7 +63,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const decoded = (0, jwt_1.verifyToken)(otpToken);
         if (decoded.email !== email || decoded.otp !== otp) {
-            return res.status(400).send({ message: "Invalid OTP" });
+            return res.status(200).send({ message: "Invalid OTP" });
         }
         const { data, error } = yield supabaseClient_1.default
             .from("hdusers")
@@ -82,6 +77,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             email: data.email,
             dob: data.dob
         };
+        console.log("Login Successful.");
         res.status(200).send({ message: "User Logged in successfully", authToken, userData });
     }
     catch (error) {

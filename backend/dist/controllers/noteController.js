@@ -16,9 +16,7 @@ exports.viewNotes = exports.deleteNote = exports.createNote = void 0;
 const supabaseClient_1 = __importDefault(require("../supabaseClient"));
 const createNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { notedata } = req.body;
-    console.log(req.user);
     const userid = req.user;
-    console.log(req.body);
     const { data, error } = yield supabaseClient_1.default
         .from('notes')
         .insert([{ userid, notedata, completed: false }]);
@@ -41,6 +39,18 @@ const deleteNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     res.status(200).send({ message: 'Note deleted', data });
 });
 exports.deleteNote = deleteNote;
+const viewNotes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const userId = req.user;
+    const { data, error } = yield supabaseClient_1.default
+        .from("notes")
+        .select("")
+        .eq("userid", userId);
+    if (error) {
+        return res.status(500).send({ message: 'Error viewing note', error });
+    }
+    res.status(200).send({ message: 'View Notes', data });
+});
+exports.viewNotes = viewNotes;
 // export const updateNote = async (req: AuthRequest, res: Response) => {
 //   const { noteid, completed } = req.body;
 //   const { data, error } = await supabase
@@ -52,16 +62,3 @@ exports.deleteNote = deleteNote;
 //   }
 //   res.status(200).send({ message: 'Update note', data });
 // };
-const viewNotes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const userId = req.user;
-    console.log(userId);
-    const { data, error } = yield supabaseClient_1.default
-        .from("notes")
-        .select("")
-        .eq("userid", userId);
-    if (error) {
-        return res.status(500).send({ message: 'Error viewing note', error });
-    }
-    res.status(200).send({ message: 'View Notes', data });
-});
-exports.viewNotes = viewNotes;

@@ -4,9 +4,7 @@ import { AuthRequest } from '../middleware/auth';
 
 export const createNote = async (req: AuthRequest, res: Response) => {
   const { notedata } = req.body;
-  console.log(req.user);
   const userid = req.user;
-  console.log(req.body);
   const { data, error } = await supabase
     .from('notes')
     .insert([{ userid, notedata, completed: false }]);
@@ -34,6 +32,21 @@ export const deleteNote = async (req: AuthRequest, res: Response) => {
   res.status(200).send({ message: 'Note deleted', data });
 };
 
+export const viewNotes = async (req: AuthRequest, res: Response) => {
+  const userId = req.user;
+  const { data, error } = await supabase
+    .from("notes")
+    .select("")
+    .eq("userid", userId);
+
+  if (error) {
+    return res.status(500).send({ message: 'Error viewing note', error });
+  }
+
+  res.status(200).send({ message: 'View Notes', data });
+};
+
+
 // export const updateNote = async (req: AuthRequest, res: Response) => {
 //   const { noteid, completed } = req.body;
 //   const { data, error } = await supabase
@@ -47,18 +60,3 @@ export const deleteNote = async (req: AuthRequest, res: Response) => {
 //   res.status(200).send({ message: 'Update note', data });
 
 // };
-
-export const viewNotes = async (req: AuthRequest, res: Response) => {
-  const userId = req.user;
-  console.log(userId);
-  const { data, error } = await supabase
-    .from("notes")
-    .select("")
-    .eq("userid", userId);
-
-  if (error) {
-    return res.status(500).send({ message: 'Error viewing note', error });
-  }
-
-  res.status(200).send({ message: 'View Notes', data });
-};
