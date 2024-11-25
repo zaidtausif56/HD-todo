@@ -1,5 +1,11 @@
 # HD Notes ✨
 
+## Disclaimer
+#### The website may take some time to send the otp on first try as backend is hosted on free instance of render. Render will spin down the free instance with inactivity, which can delay requests by 50 seconds or more. Your patience is highly appreciated.\\
+
+--- 
+## Introduction
+
 A modern, responsive note-taking application built with React, TypeScript, Node.js, and Supabase that helps you organize your thoughts efficiently.
 
 ![image](https://github.com/user-attachments/assets/963d2b5a-395a-4d61-b93d-c32ffe3c14f2)
@@ -7,8 +13,12 @@ A modern, responsive note-taking application built with React, TypeScript, Node.
 ![image](https://github.com/user-attachments/assets/40900e70-64a9-48ce-af56-3ab5cad5c6a9)
 
 ![image](https://github.com/user-attachments/assets/d9be36e5-e2b4-44a3-88a0-8e353c620c2b)
+<p>
+  <img  width="300" src="https://github.com/user-attachments/assets/30e9f26b-0025-47d6-b04e-c83d7fe7361c" hspace=100">
+<img  width="300" src="https://github.com/user-attachments/assets/d392c921-5ebb-4230-9b88-5d4f62e462ef" hspace="10">
+</p>
 
-
+##
 
 ## ✨ Features
 
@@ -24,6 +34,7 @@ A modern, responsive note-taking application built with React, TypeScript, Node.
   - Create and delete notes
   - Real-time updates
   - Clean and intuitive interface
+  - Responsive design for all devices
 
 
  
@@ -197,6 +208,7 @@ npm start
 - Axios for API calls
 - Context API for state management
 - Modern CSS3 with responsive design
+- Hosted using Vercel
 
 ### Backend
 
@@ -206,6 +218,7 @@ npm start
 - JWT for authentication
 - Nodemailer for OTP delivery
 - Express Session management
+- Hosted using Render 
 
 ## 🔒 Security Features
 
