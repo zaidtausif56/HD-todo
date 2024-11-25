@@ -31,7 +31,7 @@ const Login: React.FC = () => {
       }
 
       const res = await sendOtp(email, "login");
-      if (res.stat !== "fail") {
+      if (res.message === "OTP sent to email.") {
         setOtpToken(res.otpToken);
         setIsOtpSent(true);
         setResponse(res.message);
@@ -89,6 +89,7 @@ const Login: React.FC = () => {
                   placeholder=" "
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  disabled={isOtpSent}
                   required
                 />
                 <span>Email</span>

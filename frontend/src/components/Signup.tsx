@@ -45,7 +45,7 @@ const SignUp: React.FC = () => {
         setResponse("All feilds required!");
       } else {
         const res = await sendOtp(formData.email, "signup");
-        if (res.stat !== "fail") {
+        if (res.message === "OTP sent to email.") {
           setOtpToken(res.otpToken);
           setIsOtpSent(true);
           setResponse(res.message);
@@ -102,6 +102,7 @@ const SignUp: React.FC = () => {
                   name="name"
                   placeholder=" "
                   value={formData.name}
+                  disabled={isOtpSent}
                   onChange={handleInputChange}
                   required
                 />
@@ -114,12 +115,13 @@ const SignUp: React.FC = () => {
                 <input
                   type="date"
                   name="dob"
-                  placeholder="dob"
+                  placeholder="yyyy-mm-dd"
                   value={formData.dob}
+                  disabled={isOtpSent}
                   onChange={handleInputChange}
                   required
                 />
-                <span>Date of Birth</span>
+                <span></span>
               </label>
             </div>
 
@@ -131,6 +133,7 @@ const SignUp: React.FC = () => {
                   placeholder=" "
                   value={formData.email}
                   onChange={handleInputChange}
+                  disabled={isOtpSent}
                   required
                 />
                 <span>Email</span>

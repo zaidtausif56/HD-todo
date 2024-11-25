@@ -20,7 +20,7 @@ export const sendOTP = async (req: Request, res: Response) => {
     const otpToken = generateOtpToken(email, otp);
     await sendOTPEmail(email, otp);
     console.log("OTP Sent");
-    res.status(200).send({ message: "OTP sent to email", otpToken });
+    res.status(200).send({ message: "OTP sent to email.", otpToken });
   } else {
     res.status(200).send({ message: page === "login" ? "Account does not exist." : "Account already exists." });
   }
