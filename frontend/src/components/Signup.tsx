@@ -45,7 +45,7 @@ const SignUp: React.FC = () => {
         setResponse("All feilds required!");
       } else {
         const res = await sendOtp(formData.email, "signup");
-        if (res.message === "OTP sent to email.") {
+        if (res.message === "OTP sent to email") {
           setOtpToken(res.otpToken);
           setIsOtpSent(true);
           setResponse(res.message);
