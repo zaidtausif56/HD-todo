@@ -2,6 +2,14 @@
 
 A modern, responsive note-taking application built with React, TypeScript, Node.js, and Supabase that helps you organize your thoughts efficiently.
 
+![image](https://github.com/user-attachments/assets/963d2b5a-395a-4d61-b93d-c32ffe3c14f2)
+
+![image](https://github.com/user-attachments/assets/40900e70-64a9-48ce-af56-3ab5cad5c6a9)
+
+![image](https://github.com/user-attachments/assets/d9be36e5-e2b4-44a3-88a0-8e353c620c2b)
+
+
+
 ## ✨ Features
 
 - **🔐 Secure Authentication**
@@ -9,6 +17,7 @@ A modern, responsive note-taking application built with React, TypeScript, Node.
   - Email-based OTP authentication
   - Protected routes and sessions
   - JWT token management
+  - Protected API endpoints
 
 - **📝 Note Management**
 
@@ -16,17 +25,8 @@ A modern, responsive note-taking application built with React, TypeScript, Node.
   - Real-time updates
   - Clean and intuitive interface
 
-- **💫 Modern UI/UX**
 
-  - Responsive design for all devices
-  - Smooth animations and transitions
-  - Professional and minimalist interface
-
-- **🛡️ Security**
-  - JWT token-based authentication
-  - Email OTP verification
-  - Protected API endpoints
-
+ 
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -59,14 +59,14 @@ cd frontend
 npm install
 ```
 
-## Core Dependencies
+###### Core Dependencies
 
 ```bash
 npm install react react-dom react-router-dom
 npm install axios@1.7.7 typescript
 ```
 
-## Development Dependencies
+###### Development Dependencies
 
 ```bash
 npm install --save-dev @types/react @types/react-dom
@@ -101,7 +101,7 @@ cd backend
 npm install
 ```
 
-## Core Dependencies
+###### Core Dependencies
 
 ```bash
 npm install express@4.21.1 @supabase/supabase-js
@@ -110,7 +110,7 @@ npm install express-session@1.18.1 jsonwebtoken
 npm install nodemailer@6.9.16 otp-generator
 ```
 
-## Development Dependencies
+###### Development Dependencies
 
 ```bash
 npm install --save-dev typescript ts-node
@@ -154,7 +154,7 @@ create table hdusers (
 );
 ```
 
-**Notes Table**
+**Notes Table (notes)**
 
 ```sql
 create table notes (
@@ -165,6 +165,11 @@ create table notes (
   created_at timestamp with time zone default timezone('utc'::text, now())
 );
 ```
+#### Schema
+
+![image](https://github.com/user-attachments/assets/309aaa94-1bc2-43a9-9b2f-fba7dd94ced8)
+
+
 
 5. Start the server
 
