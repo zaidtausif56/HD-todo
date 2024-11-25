@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# HD-todo
-=======
-
 # HD Notes ✨
 
 A modern, responsive note-taking application built with React, TypeScript, Node.js, and Supabase that helps you organize your thoughts efficiently.
@@ -9,16 +5,19 @@ A modern, responsive note-taking application built with React, TypeScript, Node.
 ## ✨ Features
 
 - **🔐 Secure Authentication**
+
   - Email-based OTP authentication
   - Protected routes and sessions
   - JWT token management
 
 - **📝 Note Management**
+
   - Create and delete notes
   - Real-time updates
   - Clean and intuitive interface
 
 - **💫 Modern UI/UX**
+
   - Responsive design for all devices
   - Smooth animations and transitions
   - Professional and minimalist interface
@@ -42,28 +41,33 @@ A modern, responsive note-taking application built with React, TypeScript, Node.
 #### Frontend Setup
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourusername/hd-notes.git
 cd hd-notes
 ```
 
 2. Navigate to the frontend directory
+
 ```bash
 cd frontend
 ```
 
 3. Install dependencies
+
 ```bash
 npm install
 ```
 
-
 ## Core Dependencies
+
 ```bash
 npm install react react-dom react-router-dom
 npm install axios@1.7.7 typescript
 ```
+
 ## Development Dependencies
+
 ```bash
 npm install --save-dev @types/react @types/react-dom
 npm install --save-dev @testing-library/react @testing-library/jest-dom
@@ -72,11 +76,13 @@ npm install --save-dev @types/jest @types/node
 ```
 
 4. Create a .env file in the frontend directory
+
 ```env
 REACT_APP_API_URL=http://localhost:4001
 ```
 
 5. Start the development server
+
 ```bash
 npm start
 ```
@@ -84,16 +90,19 @@ npm start
 #### Backend Setup
 
 1. Navigate to the backend directory
+
 ```bash
 cd backend
 ```
 
 2. Install dependencies
+
 ```bash
 npm install
 ```
 
 ## Core Dependencies
+
 ```bash
 npm install express@4.21.1 @supabase/supabase-js
 npm install cors@2.8.5 dotenv
@@ -102,6 +111,7 @@ npm install nodemailer@6.9.16 otp-generator
 ```
 
 ## Development Dependencies
+
 ```bash
 npm install --save-dev typescript ts-node
 npm install --save-dev @types/express @types/cors
@@ -113,6 +123,7 @@ npm install --save-dev @types/otp-generator
 ```
 
 3. Create a .env file in the backend directory
+
 ```env
 PORT=4001
 SUPABASE_URL=your_supabase_project_url
@@ -132,6 +143,7 @@ SMTP_PASS=your_smtp_password
 Create the following tables in your Supabase dashboard:
 
 **Users Table (hdusers)**
+
 ```sql
 create table hdusers (
   id uuid default uuid_generate_v4() primary key,
@@ -143,6 +155,7 @@ create table hdusers (
 ```
 
 **Notes Table**
+
 ```sql
 create table notes (
   id uuid default uuid_generate_v4() primary key,
@@ -154,6 +167,7 @@ create table notes (
 ```
 
 5. Start the server
+
 ```bash
 npm run dev
 # or for production
@@ -171,6 +185,7 @@ npm start
 ## 🎨 Technologies Used
 
 ### Frontend
+
 - React 18.3
 - TypeScript 4.9
 - React Router v7
@@ -179,6 +194,7 @@ npm start
 - Modern CSS3 with responsive design
 
 ### Backend
+
 - Node.js with Express
 - TypeScript 5.7
 - Supabase (PostgreSQL)
@@ -205,7 +221,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (\`git push origin feature/AmazingFeature\`)
 5. Open a Pull Request
 
-
 ## 📞 Support
 
 For support, email zaidtausif56@gmail.com or create an issue in this repository.
@@ -218,4 +233,3 @@ For support, email zaidtausif56@gmail.com or create an issue in this repository.
 ---
 
 Made with ❤️ by Md Zaid Tausif
->>>>>>> 7688a5730b01e50bce37f34ee9a85579e5b4df96

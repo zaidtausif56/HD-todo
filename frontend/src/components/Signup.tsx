@@ -168,7 +168,7 @@ const SignUp: React.FC = () => {
             )}
             {response && <p className="response-message">{response}</p>}
 
-            <div className="divider"></div>
+            {/* <div className="divider"></div> */}
             <p className="signin-link">
               Already have an account? <a href="/login">Sign in</a>
             </p>

@@ -41,11 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
   },
   "devDependencies": {
     "@svgr/cli": "^8.1.0"
-=======
->>>>>>> 7688a5730b01e50bce37f34ee9a85579e5b4df96
   }
 }

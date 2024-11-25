@@ -6,7 +6,7 @@
 }
 
 .left-column {
-  flex: 35%;
+  flex: 30%;
   background-color: white;
   padding: 32px;
   display: flex;
@@ -21,7 +21,7 @@
 }
 
 .right-column {
-  flex: 65%;
+  flex: 70%;
   background-color: white;
   position: relative;
   overflow: hidden;
@@ -31,7 +31,8 @@
 
 .container {
   height: 98%; /* Change from 98vh to 100% */
-  width: 100%;
+  width: 98%;
+  padding: 7px;
   position: relative;
 }
 
