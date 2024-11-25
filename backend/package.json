@@ -2,8 +2,12 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "./src/app.ts",
+  
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "build": "tsc",
+  "start": "node dist/app.js",
+  "dev": "ts-node-dev src/app.ts",
+  "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
