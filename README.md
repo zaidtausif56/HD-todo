@@ -17,6 +17,7 @@ A modern, responsive note-taking application built with React, TypeScript, Node.
   - Email-based OTP authentication
   - Protected routes and sessions
   - JWT token management
+  - Protected API endpoints
 
 - **📝 Note Management**
 
@@ -24,11 +25,8 @@ A modern, responsive note-taking application built with React, TypeScript, Node.
   - Real-time updates
   - Clean and intuitive interface
 
-- **🛡️ Security**
-  - JWT token-based authentication
-  - Email OTP verification
-  - Protected API endpoints
 
+ 
 ## 🚀 Getting Started
 
 ### Prerequisites
