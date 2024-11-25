@@ -61,7 +61,7 @@
 
 .container {
   height: 98%; /* Change from 98vh to 100% */
-  width: 100%;
+  width: 98%;
   padding: 7px;
   position: relative;
 }

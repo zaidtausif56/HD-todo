@@ -6,7 +6,7 @@
 }
 
 .dashleft-column {
-  flex: 30%;
+  flex: 35%;
   background-color: white;
   padding: 32px;
   display: flex;
@@ -21,7 +21,7 @@
 }
 
 .dashright-column {
-  flex: 70%;
+  flex: 65%;
   background-color: white;
   position: relative;
   overflow: hidden;
@@ -40,7 +40,6 @@
   width: 40%;
   height: 98%;
   object-fit: cover;
-
   border-radius: 24px 24px 24px 24px; /* Rounded corners only on left side */
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
@@ -259,6 +258,34 @@
   object-fit: cover;
 }
 
+.sign-out {
+  color: #6c6c6c;
+  background: none;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sign-out:hover {
+  color: #356bff;
+  background-color: rgba(53, 107, 255, 0.1);
+}
+
+.sign-out:focus {
+  outline: 2px solid #356bff;
+  outline-offset: 2px;
+}
+
+.sign-out:active {
+  transform: scale(0.98);
+}
+
 /* Tablet Devices */
 @media (max-width: 1024px) {
   .dashboard-container {
@@ -305,11 +332,11 @@
 /* Mobile Devices */
 @media (max-width: 480px) {
   .dashboard-container {
-    width: 97vw;
+    width: 90vw;
   }
   .dashform {
-    width: 97%;
-    max-width: 97%;
+    width: 90%;
+    max-width: 90%;
     margin-bottom: 24px;
   }
 
@@ -399,48 +426,20 @@
     min-height: 100vh;
   }
 
-  .left-column {
+  .dashleft-column {
     padding: 16px;
   }
 
-  .welcome-card {
+  .dashwelcome-card {
     margin-bottom: 16px;
   }
 
-  .notes-list {
+  .dashnotes-list {
     gap: 8px;
   }
 }
 
 /* ... existing styles ... */
-
-.sign-out {
-  color: #6c6c6c;
-  background: none;
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.sign-out:hover {
-  color: #356bff;
-  background-color: rgba(53, 107, 255, 0.1);
-}
-
-.sign-out:focus {
-  outline: 2px solid #356bff;
-  outline-offset: 2px;
-}
-
-.sign-out:active {
-  transform: scale(0.98);
-}
 
 /* Responsive styles for sign-out button */
 @media (max-width: 768px) {
