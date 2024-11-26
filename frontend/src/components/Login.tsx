@@ -31,7 +31,7 @@ const Login: React.FC = () => {
       }
       setResponse("Sending OTP. Please wait!");
       const res = await sendOtp(email, "login");
-      if (res.message === "OTP sent to email") {
+      if (res.message === "OTP sent to email.") {
         setOtpToken(res.otpToken);
         setIsOtpSent(true);
         setResponse(res.message);
