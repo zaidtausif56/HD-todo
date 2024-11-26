@@ -29,7 +29,7 @@ const sendOTP = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const otpToken = (0, jwt_1.generateOtpToken)(email, otp);
         yield (0, emailService_1.sendOTPEmail)(email, otp);
         console.log("OTP Sent");
-        res.status(200).send({ message: "OTP sent to email", otpToken });
+        res.status(200).send({ message: "OTP sent to email.", otpToken });
     }
     else {
         res.status(200).send({ message: page === "login" ? "Account does not exist." : "Account already exists." });
