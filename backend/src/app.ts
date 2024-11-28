@@ -23,6 +23,9 @@ app.use(
   })
 );
 
+app.use('/', (req, res) => {
+  res.send('Hello World!');
+});
 app.use('/auth', authRoutes);
 app.use('/notes', noteRoutes);
 

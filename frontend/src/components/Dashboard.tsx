@@ -16,6 +16,7 @@ const Dashboard: React.FC = () => {
   const [notes, setNotes] = useState<Note[]>([]);
   const [newNote, setNewNote] = useState("");
   const [showCreateNote, setShowCreateNote] = useState(false);
+  const [response, setResponse] = useState("");
   const { accessToken, userData, logout, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -30,7 +31,14 @@ const Dashboard: React.FC = () => {
     const fetchNotes = async () => {
       if (accessToken) {
         try {
+          setResponse("Fetching Notes!");
           const response = await viewNotes(accessToken);
+          if (response.data.length === 0) {
+            setResponse("No Notes Added!");
+          }
+          else {
+            setResponse("");
+          }
           setNotes(response.data);
         } catch (error) {
           console.error("Error fetching notes:", error);
@@ -123,21 +131,23 @@ const Dashboard: React.FC = () => {
           </button>
 
           <div className="dashnotes-section">
-            <h2>Notes</h2>
-            <div className="dashnotes-list">
-              {notes.map((note) => (
-                <div key={note.id} className="dashnote-item">
-                  <span className="dashnote-text">{note.notedata}</span>
-                  <button
-                    onClick={() => handleDeleteNote(note.id)}
-                    className="delete-button"
-                    aria-label="Delete note"
-                  >
-                    🗑️
-                  </button>
-                </div>
-              ))}
-            </div>
+
+            {(response === "") ? (<>
+              <h2>Notes</h2>
+              <div className="dashnotes-list">
+                {notes.map((note) => (
+                  <div key={note.id} className="dashnote-item">
+                    <span className="dashnote-text">{note.notedata}</span>
+                    <button
+                      onClick={() => handleDeleteNote(note.id)}
+                      className="delete-button"
+                      aria-label="Delete note"
+                    >
+                      🗑️
+                    </button>
+                  </div>
+                ))}
+              </div></>) : (<><h3 className="dashnote-response">{response}</h3></>)}
           </div>
         </div>
       </div>

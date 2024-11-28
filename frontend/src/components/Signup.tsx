@@ -61,6 +61,17 @@ const SignUp: React.FC = () => {
     }
   };
 
+  const handleClear = async () => {
+    setIsOtpSent(false);
+    setFormData({
+      ...formData,
+      name: "",
+      dob: "",
+      email: "",
+      otp: ""
+    });
+  };
+
   const handleSignup = async () => {
     try {
       await signup(
@@ -156,9 +167,15 @@ const SignUp: React.FC = () => {
               </label>
             </div>
             {isOtpSent ? (
-              <span onClick={handleSendOtp} className="forgot-password">
-                Resend OTP
-              </span>
+              <div>
+                <p onClick={handleSendOtp} className="forgot-password" id="p2">
+                  Resend OTP
+                </p>
+
+                <p onClick={handleClear} className="forgot-password">
+                  Clear
+                </p> </div>
+
             ) : (
               <></>
             )}

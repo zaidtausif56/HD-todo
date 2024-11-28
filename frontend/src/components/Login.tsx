@@ -44,6 +44,12 @@ const Login: React.FC = () => {
     }
   };
 
+  const handleClear = async () => {
+    setIsOtpSent(false);
+    setEmail("");
+    setOtp("");
+  };
+
   const handleLogin = async () => {
     try {
       const response = await login(email, otp, otpToken);
@@ -111,9 +117,15 @@ const Login: React.FC = () => {
             </div>
 
             {isOtpSent ? (
-              <span onClick={handleSendOtp} className="forgot-password">
-                Resend OTP
-              </span>
+              <div>
+                <p onClick={handleSendOtp} className="forgot-password" id="p2">
+                  Resend OTP
+                </p>
+
+                <p onClick={handleClear} className="forgot-password">
+                  Clear
+                </p> </div>
+
             ) : (
               <></>
             )}

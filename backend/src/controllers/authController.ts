@@ -17,7 +17,7 @@ export const sendOTP = async (req: Request, res: Response) => {
 
   if ((page === "login" && userid.data !== null) || (page === "signup" && userid.data == null)) {
     const otp = generateOTP();
-    const otpToken = generateOtpToken(email, otp);
+    const otpToken = generateOtpToken(email);
     await sendOTPEmail(email, otp);
     console.log("OTP Sent");
     res.status(200).send({ message: "OTP sent to email.", otpToken });

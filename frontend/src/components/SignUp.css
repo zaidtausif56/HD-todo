@@ -182,6 +182,10 @@
   text-decoration: underline;
 }
 
+#p2 {
+  margin-right: 53%;
+}
+
 /* Improved Mobile Responsiveness */
 @media (max-width: 1024px) {
   .signup-container {
