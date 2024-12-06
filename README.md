@@ -1,7 +1,7 @@
 # HD Notes ✨
 
 ## Disclaimer
-#### The website may take some time to send the otp on first try as backend is hosted on free instance of render. Render will spin down the free instance with inactivity, which can delay requests by 50 seconds or more. Your patience is highly appreciated.\\
+#### Backend Service has been suspended. You are free to fork the repo and make changes.\
 
 --- 
 ## Introduction
