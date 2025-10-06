@@ -1,9 +1,9 @@
-import express from 'express';
-import session from 'express-session';
-import dotenv from 'dotenv';
-import authRoutes from './routes/authRoutes';
-import noteRoutes from './routes/noteRoutes';
-import cors from 'cors';
+import express from "express";
+import session from "express-session";
+import dotenv from "dotenv";
+import authRoutes from "./routes/authRoutes";
+import noteRoutes from "./routes/noteRoutes";
+import cors from "cors";
 
 dotenv.config();
 
@@ -17,17 +17,17 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      secure: false,           // Set to true in production with HTTPS
-      maxAge: 600000
-    }
+      secure: false, // Set to true in production with HTTPS
+      maxAge: 600000,
+    },
   })
 );
 
-app.use('/', (req, res) => {
-  res.send('Hello World!');
+app.use("/", (req, res) => {
+  res.send("Hello World!");
 });
-app.use('/auth', authRoutes);
-app.use('/notes', noteRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/notes", noteRoutes);
 
 const PORT = process.env.PORT || 4001;
 app.listen(PORT, () => {
